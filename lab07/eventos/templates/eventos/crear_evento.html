@@ -1,0 +1,9 @@
+{% block content %}
+  <h2>Crear un Nuevo Evento</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Crear Evento</button>
+    <a href="{% url 'lista_eventos' %}" class="btn btn-primary"></a>
+  </form>
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Detalles del Evento</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="my-4">Detalles del Evento: {{ evento.nombre }}
+      <a href="{% url 'lista_eventos' %}"class="btn btn-primary"><i class="fas fa-home"></i> Lista</a>
+      <a href="{% url 'editar_evento' evento.id %}" class="btn btn-warning">Editar</a>
+      <form method="post" action="{% url 'eliminar_evento' evento.id %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger"
+          onclick="return confirm('¿Está seguro de que desea eliminar este evento?')">Eliminar</button>
+      </form>
+    </h1>
+
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Descripción</h3>
+        <p class="card-text">{{ evento.descripcion }}</p>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h3 class="card-title">Fecha</h3>
+        <p class="card-text">{{ evento.fecha }}</p>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h3 class="card-title">Usuarios Registrados</h3>
+        <ul class="list-group">
+          {% for registro in usuarios_registrados %}
+          <li class="list-group-item">{{ registro.usuario.nombre }} ({{ registro.usuario.email }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

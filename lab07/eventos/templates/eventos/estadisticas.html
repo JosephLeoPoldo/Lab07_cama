@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Estadísticas</title>
+</head>
+
+<body>
+
+  <h1>Estadísticas</h1>
+
+  <h2>¿Cuántos usuarios están registrados en un evento específico?</h2>
+  <p>Usuarios Registrados: {{ usuarios_registrados_count }}</p>
+
+  <h2>¿Cuántos eventos se están llevando a cabo este mes?</h2>
+  <p>Eventos Este Mes: {{ eventos_estem_mes_count }}</p>
+
+  <h2>¿Quiénes son los usuarios más activos en términos de participación en eventos?</h2>
+  <ul>
+    {% for usuario in usuarios_activos %}
+      <li>{{ usuario.nombre }} - Eventos Registrados: {{ usuario.eventos_registrados_count }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>¿Cuántos eventos ha organizado un usuario en particular?</h2>
+  <p>Eventos Organizados: {{ eventos_organizados_count }}</p>
+
+</body>
+
+</html>
